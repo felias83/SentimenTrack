@@ -1,0 +1,42 @@
+📌 Nombre del Proyecto: "SentimenTrack AI"
+Plataforma de Analítica de Reputación de Marca en Tiempo Real
+📄 Descripción General
+Es una plataforma diseñada para empresas que necesitan monitorear qué dice la gente sobre sus productos o servicios en internet en tiempo real. El sistema captura un flujo constante de comentarios de usuarios, utiliza un modelo de Inteligencia Artificial para analizar si el comentario es positivo, negativo o neutral, y procesa estos datos masivos sin saturarse. Finalmente, muestra métricas críticas y alertas en un panel interactivo para que el equipo de marketing o atención al cliente pueda actuar de inmediato si hay una crisis de reputación.
+
+⚙️ Funcionalidades Clave (Lo que hará tu aplicación)
+Para que el proyecto demuestre tu nivel como ingeniero, implementaremos estas 4 funcionalidades principales:
+
+1. Ingesta de Datos en Simulación Continua (Data Ingestion)
+Qué hace: Un script en segundo plano simula un flujo constante de opiniones de clientes (por ejemplo, tweets, reseñas de Google o comentarios de soporte) que entran al sistema a gran velocidad.
+
+Valor técnico: Demuestra que sabes manejar flujos de datos (data streams) y que entiendes el concepto de comunicación asíncrona mediante colas de mensajes (RabbitMQ/Kafka).
+
+2. Procesamiento Inteligente (AI Enrichment Pipeline)
+Qué hace: Cada comentario que entra es capturado por tu servicio de Python. Este servicio pasa el texto por un modelo de Procesamiento de Lenguaje Natural (NLP). El modelo "lee" el comentario y le asigna una etiqueta: Clasificación: Negativa | Confianza: 94%.
+
+Valor técnico: Demuestra integración de Inteligencia Artificial/Modelos de Lenguaje (LLMs o HuggingFace) en aplicaciones reales, algo altísimamente demandado hoy en día.
+
+3. Almacenamiento Eficiente y Agregación (Database & Storage)
+Qué hace: Guarda el comentario, la fecha, el usuario y el resultado del análisis de IA en la base de datos. Además, calcula métricas acumuladas (ej: "¿cuántos mensajes negativos van en la última hora?").
+
+Valor técnico: Demuestra diseño de base de datos relacional (PostgreSQL), optimización de consultas e indexación por tiempo.
+
+4. Panel de Control en Tiempo Real (Frontend Dashboard)
+Qué hace: Una interfaz web moderna con gráficos dinámicos que se actualizan solos (usando WebSockets o peticiones frecuentes). Muestra:
+
+Un gráfico de línea con la evolución del humor de los usuarios hoy.
+
+Un contador de "Alertas Críticas" (si entran muchos mensajes negativos seguidos).
+
+Una lista en vivo con los últimos comentarios procesados.
+
+Valor técnico: Demuestra desarrollo Frontend (React), manejo de librerías de gráficos y conexión en tiempo real con el servidor.
+
+🎯 ¿Por qué este proyecto te conseguirá trabajo?
+Cuando un líder técnico vea este repositorio, notará que resolviste los problemas típicos de las empresas actuales:
+
+Escalabilidad: Separar la IA del Frontend evita que la web se ponga lenta.
+
+Arquitectura limpia: Al usar microservicios, si el frontend se cae, el sistema sigue procesando datos en el backend.
+
+Modernidad: Incluye IA y metodologías DevOps que el 80% de los juniors/trainees no saben usar.
