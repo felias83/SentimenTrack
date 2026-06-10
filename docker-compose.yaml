@@ -43,6 +43,14 @@ services:
       - API_URL=http://api:8000/comentarios
     depends_on:
       - api
+      # Servicio 4: Ingestador Continuo de Datos
+  ingestador:
+    build:
+      context: .
+      dockerfile: Dockerfile.ingestador
+    container_name: sentimentrack_ingestador
+    depends_on:
+      - api
 
 volumes:
   postgres_data:

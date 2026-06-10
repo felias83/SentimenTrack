@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Instalar requests para poder hacer las peticiones POST
+RUN pip install --no-cache-dir requests
+
+COPY ingestador.py .
+
+CMD ["python", "ingestador.py"]
