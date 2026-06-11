@@ -1,42 +1,35 @@
 name: Pipeline de Integración Continua (CI)
 
+# El pipeline se ejecutará automáticamente cada vez que subas cambios a la rama 'main'
 on:
   push:
-    branches: [ main ]  # Se activa cada vez que subes código a 'main'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest  # Usa una máquina Linux de GitHub
-
-    services:
-      # Enciende una base de datos Postgres temporal en la nube para probar
-      postgres_db:
-        image: postgres:15-alpine
-        env:
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: test_password
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
+  run-tests:
+    runs-on: ubuntu-latest  # Usa la versión más reciente de Linux Ubuntu en la nube
 
     steps:
+    # 1. Copiar el código de tu repositorio dentro de la máquina virtual de GitHub
     - name: Descargar código del repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-     Tarjeta 2: Configurar Python
+    # 2. Instalar y configurar Python en la máquina virtual
     - name: Configurar Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.12'
 
+    # 3. Instalar todas las librerías necesarias para que el proyecto y los tests funcionen
     - name: Instalar dependencias
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest httpx  # Librerías para probar
+        pip install pytest httpx2  # Aseguramos las herramientas de pruebas
 
+    # 4. El momento de la verdad: Ejecutar Pytest en la nube
     - name: Ejecutar Pruebas Automatizadas
-      env:
-        DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
       run: |
-        pytest  # Ejecuta los tests automáticamente
+        pytest -v

@@ -1,5 +1,6 @@
 import os
 from sqlalchemy import create_engine
+import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 # Importamos la librería para leer el archivo .env local
@@ -22,7 +23,7 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Esta clase base la usaremos para crear nuestras tablas (Modelos)
-Base = declarative_base()
+Base = sqlalchemy.orm.declarative_base()
 
 # Función auxiliar para abrir y cerrar la conexión automáticamente
 def get_db():
