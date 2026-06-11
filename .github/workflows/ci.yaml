@@ -1,35 +1,34 @@
 name: Pipeline de Integración Continua (CI)
 
-# El pipeline se ejecutará automáticamente cada vez que subas cambios a la rama 'main'
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
+# 🔥 SOLUCIÓN: Forzar el uso seguro de Node.js 24 en todo el flujo de trabajo
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   run-tests:
-    runs-on: ubuntu-latest  # Usa la versión más reciente de Linux Ubuntu en la nube
+    runs-on: ubuntu-latest
 
     steps:
-    # 1. Copiar el código de tu repositorio dentro de la máquina virtual de GitHub
     - name: Descargar código del repositorio
       uses: actions/checkout@v4
 
-    # 2. Instalar y configurar Python en la máquina virtual
     - name: Configurar Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.12'
 
-    # 3. Instalar todas las librerías necesarias para que el proyecto y los tests funcionen
     - name: Instalar dependencias
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest httpx2  # Aseguramos las herramientas de pruebas
+        pip install pytest httpx
 
-    # 4. El momento de la verdad: Ejecutar Pytest en la nube
     - name: Ejecutar Pruebas Automatizadas
       run: |
         pytest -v
