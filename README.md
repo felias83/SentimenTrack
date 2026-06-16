@@ -1,4 +1,9 @@
 SentimenTrack AI 🚀
+# SentimenTrack AI 🚀
+
+> 🍿 **[¡Haz clic aquí para ver el Video Demo de 2 minutos narrado por mí!](https://drive.google.com/file/d/1sPwyxAlPlOCn-nra5DNyK4CR2qfO75B2/view?usp=drive_link)** donde explico la arquitectura de microservicios, el funcionamiento del procesamiento con IA en tiempo real y la automatización de la infraestructura.
+
+---
 SentimenTrack AI es un ecosistema completo de microservicios diseñado para la ingesta, procesamiento analítico y visualización en tiempo real de comentarios de usuarios. El sistema utiliza Inteligencia Artificial (Modelos NLP de Hugging Face) para clasificar automáticamente el sentimiento de los textos ingresados.
 
 La arquitectura está completamente contenerizada, es escalable, segura y cuenta con un pipeline automatizado de calidad de código.
