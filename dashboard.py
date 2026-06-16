@@ -55,13 +55,13 @@ while True:
                     fig_pastel = px.pie(conteo, values='Cantidad', names='Sentimiento', 
                                         color='Sentimiento',
                                         color_discrete_map={'positivo': '#2ecc71', 'neutral': '#f1c40f', 'negativo': '#e74c3c'})
-                    st.plotly_chart(fig_pastel, use_container_width=True)
+                    st.plotly_chart(fig_pastel, use_container_width=True, key=f"pastel_{time.time()}")
 
                 with col_der:
                     st.subheader("📋 Últimos Comentarios Procesados")
                     # Mostramos los comentarios en una tabla limpia, ordenados por los más recientes
                     df_mostrar = df[['usuario', 'texto', 'sentimiento', 'confianza']].iloc[::-1]
-                    st.dataframe(df_mostrar, use_container_width=True)
+                    st.dataframe(df_mostrar, use_container_width=True, key=f"tabla_{time.time()}")
 
             else:
                 st.info("Aún no hay comentarios guardados en la base de datos. Ve a la documentación de la API para agregar algunos.")
